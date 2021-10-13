@@ -2,23 +2,11 @@ package main
 
 import (
 	"bytes"
-	"flag"
-	"log"
-	"os"
 	"strings"
 	"testing"
 )
 
 type foo struct {
-}
-
-func init() {
-	var debug bool
-	flag.BoolVar(&debug, "debug", false, "enable debug log")
-	flag.Parse()
-	if debug {
-		dbgLog = log.New(os.Stderr, "D ", 0)
-	}
 }
 
 func iferrStr(in string, pos int) (string, error) {
@@ -56,10 +44,10 @@ func iferrOK(t *testing.T, fn string, off int, exp string) {
 }
 
 func TestIferr(t *testing.T) {
-	iferrOK(t, `(interface{}, error)`, 0, `nil, err`)
-	iferrOK(t, `(map[string]struct{}, error)`, 0, `nil, err`)
-	iferrOK(t, `(chan bool, error)`, 0, `nil, err`)
-	iferrOK(t, `(bool, error)`, 0, `false, err`)
-	iferrOK(t, `(foo, error)`, 0, `foo{}, err`)
-	iferrOK(t, `(*foo, error)`, 0, `nil, err`)
+	iferrOK(t, `(interface{}, error)`, 0, `nil, fmt.Errorf(" %w", err)`)
+	iferrOK(t, `(map[string]struct{}, error)`, 0, `nil, fmt.Errorf(" %w", err)`)
+	iferrOK(t, `(chan bool, error)`, 0, `nil, fmt.Errorf(" %w", err)`)
+	iferrOK(t, `(bool, error)`, 0, `false, fmt.Errorf(" %w", err)`)
+	iferrOK(t, `(foo, error)`, 0, `foo{}, fmt.Errorf(" %w", err)`)
+	iferrOK(t, `(*foo, error)`, 0, `nil, fmt.Errorf(" %w", err)`)
 }
