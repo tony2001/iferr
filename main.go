@@ -145,7 +145,7 @@ func writeIferr(w io.Writer, types []ast.Expr) error {
 			continue
 		}
 		if ts == "error" {
-			bb.WriteString("err")
+			bb.WriteString("fmt.Errorf(\" %w\", err)")
 			continue
 		}
 		if ts == "string" {

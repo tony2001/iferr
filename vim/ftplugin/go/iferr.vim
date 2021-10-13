@@ -10,7 +10,7 @@ function! s:IfErr()
   call append(pos[1], out)
   silent normal! j=2j
   call setpos('.', pos)
-  silent normal! 4j
+  silent normal! 2j7w2l
 endfunction
 
 command! -buffer -nargs=0 IfErr call s:IfErr()
