@@ -2,24 +2,9 @@ package main
 
 import (
 	"bytes"
-	"flag"
-	"log"
-	"os"
 	"strings"
 	"testing"
 )
-
-type foo struct {
-}
-
-func init() {
-	var debug bool
-	flag.BoolVar(&debug, "debug", false, "enable debug log")
-	flag.Parse()
-	if debug {
-		dbgLog = log.New(os.Stderr, "D ", 0)
-	}
-}
 
 func iferrStr(in string, pos int) (string, error) {
 	out := &bytes.Buffer{}
