@@ -172,7 +172,7 @@ func writeIferr(w io.Writer, types []ast.Expr) error {
 			continue
 		}
 		// treat it as an interface when type name has "."
-		if strings.Index(ts, ".") >= 0 {
+		if strings.Contains(ts, ".") {
 			bb.WriteString("nil")
 			continue
 		}
