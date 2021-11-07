@@ -59,7 +59,6 @@ func (v *visitor) Visit(node ast.Node) ast.Visitor {
 		if x.Name != nil {
 			fname = x.Name.Name
 		}
-		fname = x.Name.Name
 		if v.pos < x.Pos() || v.pos > x.End() {
 			return nil
 		}
