@@ -181,7 +181,10 @@ func writeIferr(w io.Writer, types []ast.Expr) error {
 		bb.WriteString("{}")
 	}
 	bb.WriteString("\n}\n")
-	io.Copy(w, bb)
+	_, err := io.Copy(w, bb)
+	if err != nil {
+		return fmt.Errorf("io.Copy(): %w", err)
+	}
 	return nil
 }
 
