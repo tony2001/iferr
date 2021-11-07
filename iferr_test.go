@@ -6,9 +6,6 @@ import (
 	"testing"
 )
 
-type foo struct {
-}
-
 func iferrStr(in string, pos int) (string, error) {
 	out := &bytes.Buffer{}
 	r := strings.NewReader(in)

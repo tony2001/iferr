@@ -86,10 +86,6 @@ func (v *visitor) Visit(node ast.Node) ast.Visitor {
 	}
 }
 
-type field struct {
-	name string
-}
-
 func toTypes(fl *ast.FieldList) []ast.Expr {
 	if fl == nil || len(fl.List) == 0 {
 		return nil
